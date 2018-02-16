@@ -31,7 +31,7 @@ class Bottles
 
   private def how_many(bottles)
     how_many = if bottles > 0 
-      "#{bottles} bottle#{bottles > 1? "s": ""}"
+      "#{bottles} bottle#{"s" if bottles > 1}"
     else
       "no more bottles"
     end
