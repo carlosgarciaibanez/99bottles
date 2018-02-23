@@ -11,32 +11,21 @@ class Bottles
   end
 
   def verse(verse_num)
-    return first_part(verse_num) + second_part(verse_num)
+    case verse_num
+      when 0
+	return """No more bottles of beer on the wall, no more bottles of beer.\n" +
+		"Go to the store and buy some more, 99 bottles of beer on the wall.\n""" 
+      when 1
+	return "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+		"Take it down and pass it around, no more bottles of beer on the wall.\n"
+      when 2
+        return "2 bottles of beer on the wall, 2 bottles of beer.\n" +
+		"Take one down and pass it around, 1 bottle of beer on the wall.\n"
+      else
+        return "#{verse_num} bottles of beer on the wall, #{verse_num} bottles of beer.\n" +
+		"Take one down and pass it around, #{verse_num - 1} bottles of beer on the wall.\n"
+     end
   end 
-
-  private def first_part(bottles)
-    return "#{how_many(bottles)} on the wall, #{how_many(bottles)}.\n".capitalize
-  end
-
-  private def second_part(bottles)
-    if bottles == 0
-      what_to_do = "Go to the store and buy some more"
-      next_bottles = 99
-    else
-      what_to_do = "Take #{bottles > 1? "one": "it"} down and pass it around"
-      next_bottles = bottles - 1
-    end
-    return "#{what_to_do}, #{how_many(next_bottles)} on the wall.\n"
-  end
-
-  private def how_many(bottles)
-    how_many = if bottles > 0 
-      "#{bottles} bottle#{"s" if bottles > 1}"
-    else
-      "no more bottles"
-    end
-    return "#{how_many} of beer"  
-  end
 end
 
 if __FILE__ == $0
