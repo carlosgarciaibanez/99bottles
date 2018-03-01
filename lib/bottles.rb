@@ -16,11 +16,11 @@ class Bottles
 	return """No more bottles of beer on the wall, no more bottles of beer.\n" +
 		"Go to the store and buy some more, 99 bottles of beer on the wall.\n""" 
       when 1
-	return "1 bottle of beer on the wall, 1 bottle of beer.\n" +
-		"Take it down and pass it around, no more bottles of beer on the wall.\n"
+	return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} bottle of beer.\n" +
+		"Take #{pronoun(verse_num)} down and pass it around, no more #{container(verse_num - 1)} of beer on the wall.\n"
       else
         return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} bottles of beer.\n" +
-		"Take one down and pass it around, #{verse_num - 1} #{container(verse_num - 1)} of beer on the wall.\n"
+		"Take #{pronoun(verse_num)} down and pass it around, #{verse_num - 1} #{container(verse_num - 1)} of beer on the wall.\n"
      end
   end 
 
@@ -31,6 +31,14 @@ class Bottles
         return "bottles"
      end
   end 
+
+  def pronoun(number)
+    if (number == 1)
+      return "it"
+    else
+      return "one"
+    end
+  end
 end
 
 if __FILE__ == $0
