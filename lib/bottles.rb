@@ -15,12 +15,9 @@ class Bottles
       when 0
 	return """No more bottles of beer on the wall, no more bottles of beer.\n" +
 		"Go to the store and buy some more, 99 bottles of beer on the wall.\n""" 
-      when 1
-	return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} bottle of beer.\n" +
-		"Take #{pronoun(verse_num)} down and pass it around, no more #{container(verse_num - 1)} of beer on the wall.\n"
       else
-        return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} bottles of beer.\n" +
-		"Take #{pronoun(verse_num)} down and pass it around, #{verse_num - 1} #{container(verse_num - 1)} of beer on the wall.\n"
+        return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} #{container(verse_num)} of beer.\n" +
+		"Take #{pronoun(verse_num)} down and pass it around, #{quantity(verse_num - 1)} #{container(verse_num - 1)} of beer on the wall.\n"
      end
   end 
 
@@ -37,6 +34,14 @@ class Bottles
       return "it"
     else
       return "one"
+    end
+  end
+
+  def quantity(rawNumber)
+    if (rawNumber == 0) 
+      return "no more"
+    else
+      return rawNumber.to_s
     end
   end
 end
