@@ -13,10 +13,10 @@ class Bottles
   def verse(verse_num)
     case verse_num
       when 0
-	return """No more bottles of beer on the wall, no more bottles of beer.\n" +
-		"Go to the store and buy some more, 99 bottles of beer on the wall.\n""" 
+	return "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
+		"Go to the store and buy some more, 99 bottles of beer on the wall.\n" 
       else
-        return "#{verse_num} #{container(verse_num)} of beer on the wall, #{verse_num} #{container(verse_num)} of beer.\n" +
+	return "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
 		"Take #{pronoun(verse_num)} down and pass it around, #{quantity(verse_num - 1)} #{container(verse_num - 1)} of beer on the wall.\n"
      end
   end 
