@@ -11,14 +11,8 @@ class Bottles
   end
 
   def verse(verse_num)
-    case verse_num
-      when 0
-	return "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
-		"#{action(verse_num)}, #{quantity(successor(verse_num))} #{container(successor(verse_num))} of beer on the wall.\n" 
-      else
-	return "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
-		"#{action(verse_num)}, #{quantity(successor(verse_num))} #{container(successor(verse_num))} of beer on the wall.\n"
-     end
+    "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
+      "#{action(verse_num)}, #{quantity(successor(verse_num))} #{container(successor(verse_num))} of beer on the wall.\n" 
   end 
 
   def successor(num)
