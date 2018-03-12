@@ -11,29 +11,11 @@ class Bottles
   end
 
   def verse(verse_num)
-    "#{quantity(verse_num).capitalize} #{container(verse_num)} of beer on the wall, #{quantity(verse_num)} #{container(verse_num)} of beer.\n" +
-      "#{action(verse_num)}, #{quantity(successor(verse_num))} #{container(successor(verse_num))} of beer on the wall.\n" 
+    bottle_number = BottleNumber.new(verse_num)
+    next_bottle_number = BottleNumber.new(bottle_number.successor)
+    "#{bottle_number.quantity.capitalize} #{bottle_number.container} of beer on the wall, #{bottle_number.quantity} #{bottle_number.container} of beer.\n" +
+    "#{bottle_number.action}, #{next_bottle_number.quantity} #{next_bottle_number.container} of beer on the wall.\n" 
   end 
-
-  def successor(num)
-    BottleNumber.new(num).successor
-  end
-
-  def action(num)
-    BottleNumber.new(num).action
-  end
-
-  def container(num) 
-     BottleNumber.new(num).container
-  end 
-
-  def pronoun(number)
-    BottleNumber.new(number).pronoun
-  end
-
-  def quantity(rawNumber)
-    BottleNumber.new(rawNumber).quantity
-  end
 
   class BottleNumber
 
