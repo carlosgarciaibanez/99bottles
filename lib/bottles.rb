@@ -16,42 +16,71 @@ class Bottles
   end 
 
   def successor(num)
-    if num == 0
-      99
-    else
-      num - 1
-    end
+    BottleNumber.new(num).successor
   end
 
   def action(num)
-    if num == 0
-      "Go to the store and buy some more"
-    else
-      "Take #{pronoun(num)} down and pass it around"
-    end
+    BottleNumber.new(num).action
   end
 
   def container(num) 
-     if (num == 1)
-        "bottle"
-     else 
-        "bottles"
-     end
+     BottleNumber.new(num).container
   end 
 
   def pronoun(number)
-    if (number == 1)
-      "it"
-    else
-      "one"
-    end
+    BottleNumber.new(number).pronoun
   end
 
   def quantity(rawNumber)
-    if (rawNumber == 0) 
-      "no more"
-    else
-      rawNumber.to_s
+    BottleNumber.new(rawNumber).quantity
+  end
+
+  class BottleNumber
+
+    attr_reader :number
+
+    def initialize(number) 
+      @number = number
+    end
+
+    def successor
+      if number == 0
+        99
+      else
+        number - 1
+      end
+    end
+  
+    def action
+      if number == 0
+        "Go to the store and buy some more"
+      else
+        "Take #{pronoun} down and pass it around"
+      end
+    end
+  
+    def container
+       if (number == 1)
+          "bottle"
+       else 
+          "bottles"
+       end
+    end 
+
+    def pronoun
+      if (number == 1)
+        "it"
+      else
+        "one"
+      end
+    end
+  
+    def quantity
+      if (number == 0) 
+        "no more"
+      else
+        number.to_s
+      end
     end
   end
 end
