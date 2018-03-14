@@ -11,33 +11,32 @@ class Bottles
   end
 
   def verse(verse_num)
-    bottle_number = bottle_number_for(verse_num)
-    next_bottle_number = bottle_number_for(bottle_number.successor)
+    bottle_number = BottleNumber.for(verse_num)
+    next_bottle_number = bottle_number.successor
     "#{bottle_number} of beer on the wall, #{bottle_number} of beer.\n".capitalize +
     "#{bottle_number.action}, #{next_bottle_number} of beer on the wall.\n" 
   end 
 
-  def bottle_number_for(number)
-    case number
-      when 0
-        BottleNumber0
-      when 1
-        BottleNumber1
-      else
-        BottleNumber
-    end.new(number)
-  end
-
   class BottleNumber
 
     attr_reader :number
+
+    def self.for(number)
+      if number == 0
+        BottleNumber0
+      elsif number == 1
+ 	BottleNumber1
+      else
+        BottleNumber
+      end.new(number)
+    end
 
     def initialize(number) 
       @number = number
     end
 
     def successor
-      number - 1
+      BottleNumber.for(number - 1)
     end
   
     def action
@@ -67,7 +66,7 @@ class Bottles
     end
 
     def successor
-      99
+      BottleNumber.for(99)
     end
 
     def quantity
