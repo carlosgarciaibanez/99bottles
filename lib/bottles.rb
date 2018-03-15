@@ -26,6 +26,8 @@ class Bottles
         BottleNumber0
       elsif number == 1
  	BottleNumber1
+      elsif number == 6
+ 	BottleNumber6
       else
         BottleNumber
       end.new(number)
@@ -81,6 +83,16 @@ class Bottles
 
     def pronoun
       "it"
+    end
+  end
+
+  class BottleNumber6 < BottleNumber
+    def container
+      "six-pack"
+    end
+
+    def quantity
+      1.to_s
     end
   end
 end
